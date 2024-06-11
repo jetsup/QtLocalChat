@@ -2,8 +2,6 @@ import QtQuick 2.1
 import QtQuick.Controls
 import "../PersonProfileView"
 
-// import ChatListModelController 1.0
-// import ChatListItemModel 1.0
 Rectangle {
     id: chatView
     anchors {
@@ -31,7 +29,7 @@ Rectangle {
     ListView {
         id: listView
         anchors.fill: parent
-        model: myModel
+        model: _myModel
 
         delegate: PersonProfileView {
             id: demoProfileView

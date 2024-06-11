@@ -1,9 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include "UiController/chatlistmodel.h"
 #include "UiController/uicontroller.h"
-#include <UiController/chatlistitemmodel.h>
-#include <UiController/chatlistmodelcontroller.h>
 
 int main(int argc, char *argv[])
 {
@@ -19,6 +18,11 @@ int main(int argc, char *argv[])
     // be done before loading the QML
     QQmlContext *context(engine.rootContext());
     context->setContextProperty("uiHandler", &m_uiHandler);
+
+    ChatListModel model; // = new ChatListModel("John Doe", "12:30 AM", "Hello worldy World!");
+    context->setContextProperty("_myModel", &model);
+
+    qmlRegisterType<ChatListModel>("ui/ChatPersonView/ChatPersonView.qml", 1, 0, "ChatListModel");
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(

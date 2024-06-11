@@ -28,6 +28,9 @@ Rectangle {
             width: parent.width
             height: parent.height
         }
+
+        MouseArea {// view info about the profile
+        }
     }
     Rectangle {
         anchors {
@@ -51,7 +54,7 @@ Rectangle {
             font.pointSize: 13
             font.bold: true
             elide: Text.ElideRight
-            text: profileName
+            text: model.name
         }
 
         Text {
@@ -65,7 +68,7 @@ Rectangle {
             font.pointSize: 13
             font.bold: true
             elide: Text.ElideRight
-            text: msgTime
+            text: model.time
         }
 
         Text {
@@ -78,7 +81,10 @@ Rectangle {
             }
             font.pointSize: 10
             elide: Text.ElideRight
-            text: lastMsgContent
+            text: model.message
+        }
+
+        MouseArea {// open message on the right panel
         }
     }
 }
