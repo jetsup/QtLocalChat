@@ -11,28 +11,49 @@ Rectangle {
     }
     color: "green"
     width: parent.width * (1 / 5)
-
-    ListModel {
-        id: myModel
-
-        ListElement {
-            profileName: qsTr("Name")
-            msgTime: qsTr("Non")
-            lastMsgContent: qsTr("Some message")
+    Text {
+        id: networkType
+        text: qsTr("WiFi")
+        anchors {
+            top: parent.top
+            horizontalCenter: parent.horizontalCenter
         }
     }
-
-    // ChatListModelController {
-    //     id: myModel
-    // }
-    // ChatListItemModel {}
     ListView {
         id: listView
-        anchors.fill: parent
+        anchors {
+            top: networkType.bottom
+            bottom: parent.bottom
+            right: parent.right
+            left: parent.left
+        }
         model: _myModel
 
         delegate: PersonProfileView {
             id: demoProfileView
+        }
+    }
+
+    Rectangle {
+        anchors {
+            bottom: parent.bottom
+            right: parent.right
+            rightMargin: 10
+            bottomMargin: 10
+        }
+        width: 40
+        height: 40
+        radius: 20
+
+        Image {
+            source: "qrc:/ui/assets/add-new.png"
+            anchors.fill: parent
+            anchors.margins: 10
+        }
+
+        MouseArea {
+            id: newChat
+            anchors.fill: parent
         }
     }
 }

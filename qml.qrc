@@ -10,5 +10,6 @@
         <file>ui/assets/wifi.png</file>
         <file>ui/PersonProfileView/PersonProfileView.qml</file>
         <file>ui/assets/user.png</file>
+        <file>ui/assets/add-new.png</file>
     </qresource>
 </RCC>
