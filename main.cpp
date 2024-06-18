@@ -3,6 +3,7 @@
 #include <QQmlContext>
 #include "UiController/chatlistmodel.h"
 #include "UiController/uicontroller.h"
+#include "localutils.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,6 +14,9 @@ int main(int argc, char *argv[])
 
     UiController m_uiHandler;
 
+    LocalUtils utils;
+    QMap<QString, QString> networkDetails = utils.getNetworkTypeGateway();
+
     QQmlApplicationEngine engine;
 
     // be done before loading the QML
@@ -21,6 +25,13 @@ int main(int argc, char *argv[])
 
     ChatListModel model; // = new ChatListModel("John Doe", "12:30 AM", "Hello worldy World!");
     context->setContextProperty("_myModel", &model);
+    if (networkDetails["interface"] != "NONE") {
+        context->setContextProperty("_networkType",
+                                    networkDetails["interface"] + " (" + networkDetails["gateway"]
+                                        + ")");
+    } else {
+        context->setContextProperty("_networkType", "Not Connected");
+    }
 
     qmlRegisterType<ChatListModel>("ui/ChatPersonView/ChatPersonView.qml", 1, 0, "ChatListModel");
 

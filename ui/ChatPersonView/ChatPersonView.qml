@@ -13,11 +13,12 @@ Rectangle {
     width: parent.width * (1 / 5)
     Text {
         id: networkType
-        text: qsTr("WiFi")
+        text: _networkType
         anchors {
             top: parent.top
             horizontalCenter: parent.horizontalCenter
         }
+        font.italic: true
     }
     ListView {
         id: listView

@@ -8,6 +8,7 @@ SOURCES += \
         Models/chatperson.cpp \
         UiController/chatlistmodel.cpp \
         UiController/uicontroller.cpp \
+        localutils.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
@@ -26,4 +27,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     Models/chatperson.h \
     UiController/chatlistmodel.h \
-    UiController/uicontroller.h
+    UiController/uicontroller.h \
+    localutils.h
