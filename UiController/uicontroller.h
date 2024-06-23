@@ -14,6 +14,8 @@ class UiController : public QObject
     // epoch time
     Q_PROPERTY(unsigned long currentTime READ currentTime WRITE setCurrentTime NOTIFY
                    currentTimeChanged FINAL)
+    Q_PROPERTY(QString networkImageSrc READ networkImageSrc WRITE setNetworkImageSrc NOTIFY
+                   networkImageSrcChanged FINAL)
 
 public:
     explicit UiController(QObject *parent = nullptr);
@@ -30,6 +32,9 @@ public:
     unsigned long currentTime() const;
     void setCurrentTime(unsigned long newCurrentTime);
 
+    QString networkImageSrc() const;
+    void setNetworkImageSrc(const QString &newNetworkImageSrc);
+
 signals:
     void netSpeedChanged();
 
@@ -39,9 +44,12 @@ signals:
 
     void currentTimeChanged();
 
+    void networkImageSrcChanged();
+
 private:
     int m_netSpeed;
     int m_onlineMembers;
     short m_connectedNetwork;
     unsigned long m_currentTime;
+    QString m_networkImageSrc;
 };

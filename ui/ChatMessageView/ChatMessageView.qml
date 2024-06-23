@@ -114,7 +114,10 @@ Rectangle {
                         rightMargin: 15
                         verticalCenter: parent.verticalCenter
                     }
-                    source: "qrc:/ui/assets/no-connection.png"
+                    source: uiHandler.networkImageSrc
+
+                    MouseArea {// get the network info on hover
+                    }
                 }
 
                 Rectangle {

@@ -1,5 +1,8 @@
 #include "localutils.h"
 
+const QString LocalUtils::STR_WIFI = "WIFI";
+const QString LocalUtils::STR_ETHERNET = "ETHERNET";
+
 LocalUtils::LocalUtils() {}
 
 QMap<QString, QString> LocalUtils::getNetworkTypeGateway()
@@ -49,9 +52,9 @@ QMap<QString, QString> LocalUtils::getNetworkTypeGateway()
 
                 qDebug() << "Interface:" << iface;
                 if (iface.contains("wl")) {
-                    iface = "WiFi";
+                    iface = STR_WIFI;
                 } else {
-                    iface = "Ethernet";
+                    iface = STR_ETHERNET;
                 }
                 data.insert("interface", iface);
                 break;

@@ -58,3 +58,16 @@ void UiController::setCurrentTime(unsigned long newCurrentTime)
     m_currentTime = newCurrentTime;
     emit currentTimeChanged();
 }
+
+QString UiController::networkImageSrc() const
+{
+    return m_networkImageSrc;
+}
+
+void UiController::setNetworkImageSrc(const QString &newNetworkImageSrc)
+{
+    if (m_networkImageSrc == newNetworkImageSrc)
+        return;
+    m_networkImageSrc = newNetworkImageSrc;
+    emit networkImageSrcChanged();
+}

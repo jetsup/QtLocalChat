@@ -29,8 +29,17 @@ int main(int argc, char *argv[])
         context->setContextProperty("_networkType",
                                     networkDetails["interface"] + " (" + networkDetails["gateway"]
                                         + ")");
+        if (networkDetails["interface"] == LocalUtils::STR_WIFI) {
+            m_uiHandler.setConnectedNetwork(LocalUtils::WIFI_CONNECTED);
+            m_uiHandler.setNetworkImageSrc("qrc:/ui/assets/wifi.png");
+        } else {
+            m_uiHandler.setConnectedNetwork(LocalUtils::ETHERNET_CONNECTED);
+            m_uiHandler.setNetworkImageSrc("qrc:/ui/assets/ethernet.png");
+        }
     } else {
         context->setContextProperty("_networkType", "Not Connected");
+        m_uiHandler.setConnectedNetwork(LocalUtils::NOT_CONNECTED);
+        m_uiHandler.setNetworkImageSrc("qrc:/ui/assets/no-connection.png");
     }
 
     qmlRegisterType<ChatListModel>("ui/ChatPersonView/ChatPersonView.qml", 1, 0, "ChatListModel");
